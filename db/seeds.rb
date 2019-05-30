@@ -13,10 +13,12 @@ ct=Certificate.create!([
 pharmaceut1= Pharmaceut.create!(name: "PHT1",salary: 250,email: "pht1@email.com",hiredate: Date.today,certificate_ids: [ct.first.id,ct.last.id] )
 pharmaceut2= Pharmaceut.create!(name: "PHT2",salary: 300,email: "pht2@email.com",hiredate: Date.today,certificate_ids: [ct.first.id,ct.last.id] )
 
+
+#Limit on attribute
 branches=Branch.create!([{kind: "apteka",address: "All. 45342" },{kind: "punkt",address: "Ul1,542"}])
 
 
-# z atrybutem
+# asocjacja z atrybutem
 practices=Practice.create!( [ 
     {worker:asystent1, branch: branches.first, start_date: Date.parse('2001-02-03') },
     {worker:asystent2, branch: branches.last, start_date: Date.parse('2005-02-03') },
@@ -42,6 +44,7 @@ ws=Wholesaler.create!(name: "Sprzedawca1",discount: 10)
 
 whp = WholesalePurchase.create!(wholesaler:ws,purchase_date: Date.yesterday,sum: 2000)
 
+#Composition
 batch=Batch.create!(due_date: Date.today.months_since(15),number: 10,order: orders.first,wholesale_purchase:whp,medication: med.first)
 
 
